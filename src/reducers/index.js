@@ -1,27 +1,21 @@
-import { REQUEST_LOGIN, RECEIVE_AUTHENTICATION, receiveAuthentication, requestAuthentication } from '../actions/index.js'
+import { REQUEST_LOGIN, RECEIVE_AUTHENTICATION, receiveAuthentication, requestAuthentication, } from '../actions/index.js'
 import { combineReducers } from 'redux'
 
 
 
-const user = (state, action) => {
+const user = (state = {}, action) => {
+
     switch (action.type) {
     case REQUEST_LOGIN:
         return {
-            ...state,
-            user: {
-                ...user,
-                isLoginning: true
-            }
+            ...user,
+            isLoginning: true
         }
     case RECEIVE_AUTHENTICATION:
-        if (action.payload.pass) {
-            return {
-                ...state,
-                user: action.payload.user
-            }
-        } else {
-            return state
+        return {
+            ...action.payload.user
         }
+
     default:
         return state
     }
@@ -30,3 +24,5 @@ const user = (state, action) => {
 const rootReducer = combineReducers({
     user,
 })
+
+export default rootReducer

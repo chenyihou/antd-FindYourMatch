@@ -4,17 +4,26 @@ let user = {
     userName: 'hcy',
     sex: 'male',
     location: 'ottawa',
-    wantTodo: {
-
-    }
+    wantTodo: [{
+        todo: 'pingpong',
+        id: 1
+    }, {
+        todo: 'code',
+        id: 2
+    }, {
+        todo: 'study',
+        id: 3
+    }],
+    contact: '123-45678',
+    pass: true
 }
 
 // respond with "hello world" when a GET request is made to the homepage
 app.post('/login', (req, res) => {
-    res.end({
-        pass: true,
+    console.log(req)
+    res.end(JSON.stringify({
         user
-    })
+    }))
 })
 
 app.listen(3000)
